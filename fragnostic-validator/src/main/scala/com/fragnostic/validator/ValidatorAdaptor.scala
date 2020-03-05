@@ -2,7 +2,7 @@ package com.fragnostic.validator
 
 import java.util.Locale
 
-import com.fragnostic.i18n.MessageI18n
+import com.fragnostic.i18n.api.MessageI18n
 
 import scala.collection.mutable.ListBuffer
 
