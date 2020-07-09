@@ -2,7 +2,7 @@ package com.fragnostic.validator
 
 import java.util.Locale
 
-import com.fragnostic.i18n.api.MessageI18n
+import com.fragnostic.i18n.api.ResourceI18n
 
 import scala.collection.mutable.ListBuffer
 
@@ -10,7 +10,7 @@ trait ValidatorAdaptor[T] extends Validator[T] {
 
   private val errors: ListBuffer[String] = ListBuffer[String]()
 
-  def valida(locale: Locale, i18n: MessageI18n, text: String, maxLength: Int, keyForEmpty: String, keyForExLg: String): List[String] =
+  def valida(locale: Locale, i18n: ResourceI18n, text: String, maxLength: Int, keyForEmpty: String, keyForExLg: String): List[String] =
     if (Option(text).isEmpty)
       addError(i18n.getString(locale, keyForEmpty))
     else if (text.trim.isEmpty)
@@ -19,9 +19,8 @@ trait ValidatorAdaptor[T] extends Validator[T] {
       addError(i18n.getFormattedString(locale, keyForExLg, List(text.trim, text.trim.length.toString, maxLength.toString)))
     else Nil
 
-  def getErrors: List[String] = {
+  def getErrors: List[String] =
     errors.toList
-  }
 
   def addError(error: String): List[String] = {
     errors += error
