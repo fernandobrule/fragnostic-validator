@@ -12,7 +12,7 @@ val unusedOptions = Def.setting(
   }
 )
 
-lazy val frgValidatorSettings = Seq(
+lazy val frgValidatorApiSettings = Seq(
   organization := "com.fragnostic",
   fork in Test := true,
   baseDirectory in Test := file("."),
@@ -75,33 +75,33 @@ lazy val mavenCentralFrouFrou = Seq(
 
 lazy val doNotPublish = Seq(publish := {}, publishLocal := {}, PgpKeys.publishSigned := {}, PgpKeys.publishLocalSigned := {})
 
-lazy val frgValidatorProject = Project(
-  id = "fragnostic-validator-project",
+lazy val frgValidatorApiProject = Project(
+  id = "fragnostic-validator-api-project",
   base = file(".")).settings(
-    frgValidatorSettings ++ Seq(
-    name := "fragnostic validator project",
+    frgValidatorApiSettings ++ Seq(
+    name := "Fragnostic Validator API",
     artifacts := Classpaths.artifactDefs(Seq(packageDoc in Compile, makePom in Compile)).value,
     packagedArtifacts := Classpaths.packaged(Seq(packageDoc in Compile, makePom in Compile)).value,
-    description := "A Fragnostic Validator",
+    description := "A Fragnostic Validator API",
     shellPrompt := { state =>
       s"sbt:${Project.extract(state).currentProject.id}" + Def.withColor("> ", Option(scala.Console.CYAN))
     }
   ) ++ Defaults.packageTaskSettings(
     packageDoc in Compile, (unidoc in Compile).map(_.flatMap(Path.allSubpaths))
   )).aggregate(
-    frgValidator
+    frgValidatorApi
   ).enablePlugins(ScalaUnidocPlugin)
 
-lazy val frgValidator = Project(
-  id = "fragnostic-validator",
-  base = file("fragnostic-validator")).settings(frgValidatorSettings ++ Seq(
+lazy val frgValidatorApi = Project(
+  id = "fragnostic-validator-api",
+  base = file("fragnostic-validator-api")).settings(frgValidatorApiSettings ++ Seq(
     libraryDependencies ++= Seq(
       logbackClassic,
       slf4jApi,
       scalatest,
       fragnosticI18n
     ),
-    description := "fragnostic validator"
+    description := "fragnostic validator api"
   )
 ) dependsOn(
   //

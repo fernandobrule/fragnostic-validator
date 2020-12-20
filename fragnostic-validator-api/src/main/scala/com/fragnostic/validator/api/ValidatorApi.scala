@@ -1,10 +1,10 @@
-package com.fragnostic.validator
+package com.fragnostic.validator.api
 
 import java.util.Locale
 
 import scala.collection.mutable.ListBuffer
 
-trait Validator[T] {
+trait ValidatorApi[T] {
 
   def doValidation(
     locale: Locale,
