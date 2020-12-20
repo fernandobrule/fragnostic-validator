@@ -1,4 +1,4 @@
-package com.fragnostic.validator
+package com.fragnostic.validator.api
 
 import java.util.Locale
 
@@ -6,7 +6,7 @@ import com.fragnostic.i18n.api.ResourceI18n
 
 import scala.collection.mutable.ListBuffer
 
-trait ValidatorAdaptor[T] extends Validator[T] {
+trait ValidatorAdaptor[T] extends ValidatorApi[T] {
 
   private val errors: ListBuffer[String] = ListBuffer[String]()
 
