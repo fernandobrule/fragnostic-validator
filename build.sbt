@@ -97,9 +97,10 @@ lazy val frgValidatorApi = Project(
   base = file("fragnostic-validator-api")).settings(frgValidatorApiSettings ++ Seq(
     libraryDependencies ++= Seq(
       logbackClassic,
-      slf4jApi,
       scalatest,
-      fragnosticI18n
+      scalactic,
+      fragnosticI18n,
+      scalazCore
     ),
     description := "fragnostic validator api"
   )
