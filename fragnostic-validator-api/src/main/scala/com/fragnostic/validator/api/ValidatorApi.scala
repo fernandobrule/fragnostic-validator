@@ -1,8 +1,7 @@
 package com.fragnostic.validator.api
 
-import scalaz.{ NonEmptyList, ValidationNel }
-
 import java.util.Locale
+import scalaz.NonEmptyList
 
 trait ValidatorApi[T] {
 
