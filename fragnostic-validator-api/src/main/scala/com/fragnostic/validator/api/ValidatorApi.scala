@@ -1,11 +1,9 @@
 package com.fragnostic.validator.api
 
-import scalaz.ValidationNel
+import java.util.Locale
 
 trait ValidatorApi[T] {
 
-  type Validated[Z] = ValidationNel[String, Z]
-
-  def validate(t: T, hasToFormat: Boolean, messages: String*): Validated[String]
+  def validate(t: T, locale: Locale, hasToFormat: Boolean, messages: String*): Validated[T]
 
 }
