@@ -7,7 +7,7 @@ import java.util.Locale
 
 class YumValidator extends ValidatorApi[String] {
 
-  override def validate(yum: String, locale: Locale, hasToFormat: Boolean, messages: String*): Validated[String] =
+  override def validate(yum: String, locale: Locale, params: Map[String, String], messages: List[String]): Validated[String] =
     if (messages.length < 2) {
       "yum.validator.number.of.args.lt".failureNel
     } else if (messages.length > 2) {

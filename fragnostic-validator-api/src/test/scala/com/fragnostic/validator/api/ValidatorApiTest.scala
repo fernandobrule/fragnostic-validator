@@ -14,9 +14,9 @@ class ValidatorApiTest extends AnyFunSpec with Matchers with BeforeAndAfterEach 
   val yepValidator = new YepValidator()
   val giValidator = new GiValidator()
 
-  val hasToFormat = true
+  val locale: Locale = new Locale.Builder().setRegion("BR").setLanguage("pt").build()
 
-  val locale = new Locale.Builder().setRegion("BR").setLanguage("pt").build()
+  val params: Map[String, String] = Map[String, String]()
 
   val yepValidatorEmptyMessage = "yep.validator.yep.empty"
   val yepValidatorFailMessage = "yep.validator.i.am.not.yep"
@@ -29,14 +29,14 @@ class ValidatorApiTest extends AnyFunSpec with Matchers with BeforeAndAfterEach 
 
     it("Can Validate Yep") {
       val yep = "I am Yep"
-      val validation: Validated[String] = yepValidator.validate(yep, locale, hasToFormat, yepValidatorEmptyMessage, yepValidatorFailMessage)
+      val validation: Validated[String] = yepValidator.validate(yep, locale, params, List(yepValidatorEmptyMessage, yepValidatorFailMessage))
       validation.isSuccess should be(true)
       validation.toList.head should be(yep)
     }
 
     it("Can Validate Wrong Yep") {
       val yep = "I am peY"
-      val validation: Validated[String] = yepValidator.validate(yep, locale, hasToFormat, yepValidatorEmptyMessage, yepValidatorFailMessage)
+      val validation: Validated[String] = yepValidator.validate(yep, locale, params, List(yepValidatorEmptyMessage, yepValidatorFailMessage))
       validation.isFailure should be(true)
 
       (validation match {
@@ -52,7 +52,7 @@ class ValidatorApiTest extends AnyFunSpec with Matchers with BeforeAndAfterEach 
 
     it("Can Validate Wrong Number Of Arguments, Less Than") {
       val yep = "I am peY"
-      val validation: Validated[String] = yepValidator.validate(yep, locale, hasToFormat, yepValidatorEmptyMessage)
+      val validation: Validated[String] = yepValidator.validate(yep, locale, params, List(yepValidatorEmptyMessage))
       validation.isFailure should be(true)
 
       (validation match {
@@ -68,7 +68,7 @@ class ValidatorApiTest extends AnyFunSpec with Matchers with BeforeAndAfterEach 
 
     it("Can Validate Wrong Number Of Arguments, Great Than") {
       val yep = "I am peY"
-      val validation: Validated[String] = yepValidator.validate(yep, locale, hasToFormat, yepValidatorEmptyMessage, yepValidatorEmptyMessage, yepValidatorEmptyMessage)
+      val validation: Validated[String] = yepValidator.validate(yep, locale, params, List(yepValidatorEmptyMessage, yepValidatorEmptyMessage, yepValidatorEmptyMessage))
       validation.isFailure should be(true)
 
       (validation match {
@@ -84,14 +84,15 @@ class ValidatorApiTest extends AnyFunSpec with Matchers with BeforeAndAfterEach 
 
     it("Can Validate Yum") {
       val yum = "I am Yum"
-      val validation: Validated[String] = yumValidator.validate(yum, locale, hasToFormat, yumValidatorEmptyMessage, yumValidatorFailMessage)
+      val params: Map[String, String] = Map[String, String]()
+      val validation: Validated[String] = yumValidator.validate(yum, locale, params, List(yumValidatorEmptyMessage, yumValidatorFailMessage))
       validation.isSuccess should be(true)
       validation.toList.head should be(yum)
     }
 
     it("Can Validate Gi") {
       val gi = "I am Gi"
-      val validation: Validated[String] = giValidator.validate(gi, locale, hasToFormat, giValidatorEmptyMessage, giValidatorFailMessage)
+      val validation: Validated[String] = giValidator.validate(gi, locale, params, List(giValidatorEmptyMessage, giValidatorFailMessage))
       validation.isSuccess should be(true)
       validation.toList.head should be(gi)
     }
