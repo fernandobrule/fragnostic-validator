@@ -4,6 +4,6 @@ import java.util.Locale
 
 trait ValidatorApi[T] {
 
-  def validate(t: T, locale: Locale, params: Map[String, String], messages: List[String] = Nil): Validated[T]
+  def validate(locale: Locale, domain: String, t: T, params: Map[String, String], messages: List[String] = Nil, mandatory: Boolean = true): Validated[T]
 
 }
