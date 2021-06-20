@@ -8,6 +8,6 @@ object Dependencies {
   lazy val scalatest                  = "org.scalatest"  %% "scalatest"                           % "3.2.2" % "test"
   lazy val scalazCore                 = "org.scalaz"     %% "scalaz-core"                         % "7.3.3"
 
-  lazy val fragnosticI18n             = "com.fragnostic" % "fragnostic-i18n-impl_2.13" % "0.2.1"
+  lazy val fragnosticI18n             = "com.fragnostic" % "fragnostic-i18n-impl_2.13" % "0.2.2-SNAPSHOT"
 
 }
