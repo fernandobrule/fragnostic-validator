@@ -1,5 +1,4 @@
 import sbt._
-import Keys._
 
 object Dependencies {
 
@@ -8,6 +7,6 @@ object Dependencies {
   lazy val scalatest                  = "org.scalatest"  %% "scalatest"                           % "3.2.2" % "test"
   lazy val scalazCore                 = "org.scalaz"      % "scalaz-core_2.13"                    % "7.4.0-M8"
 
-  lazy val fragnosticI18nImpl         = "com.fragnostic"  % "fragnostic-i18n-impl_2.13"           % "0.2.3" % "test"
+  lazy val fragnosticI18nImpl         = "com.fragnostic"  % "fragnostic-i18n-impl_2.13"           % "0.2.3"
 
 }

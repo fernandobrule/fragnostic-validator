@@ -1,12 +1,19 @@
 package com.fragnostic.validator
 
-import scalaz.{ NonEmptyList, ValidationNel }
+import scalaz.ValidationNel
 
 package object api {
 
   type Validated[Z] = ValidationNel[String, Z]
 
-  def nelToList[T](nel: NonEmptyList[T]): List[T] =
-    nel.head :: nel.tail.toList
+  val VALIDATOR_TEXT_EMPTY: String = "TEXT_EMPTY"
+  val VALIDATOR_TEXT_NOT_VALID: String = "TEXT_NOT_VALID"
+  val VALIDATOR_TEXT_TOO_SHORT: String = "TEXT_TOO_SHORT"
+  val VALIDATOR_TEXT_TOO_LONG: String = "TEXT_TOO_LONG"
+  val VALIDATOR_COUNTRY_CODE: String = "COUNTRY_CODE"
+  val VALIDATOR_PASSWORD_MUST_HAVE_AT_LEAST_ONE_UPPERCASE_LETTER: String = "PASSWORD_MUST_HAVE_AT_LEAST_ONE_UPPERCASE_LETTER"
+  val VALIDATOR_PASSWORD_MUST_HAVE_AT_LEAST_ONE_LOWERCASE_LETTER: String = "PASSWORD_MUST_HAVE_AT_LEAST_ONE_LOWERCASE_LETTER"
+  val VALIDATOR_PASSWORD_MUST_HAVE_AT_LEAST_ONE_NUMBER: String = "PASSWORD_MUST_HAVE_AT_LEAST_ONE_NUMBER"
+  val VALIDATOR_PASSWORD_MUST_HAVE_AT_LEAST_ONE_SYMBOL: String = "PASSWORD_MUST_HAVE_AT_LEAST_ONE_SYMBOL"
 
 }
