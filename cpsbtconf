@@ -1,8 +1,0 @@
-cp ../fragnostic-conf/.jvmopts .
-cp ../fragnostic-conf/project/Dependencies.scala project/
-cp ../fragnostic-conf/project/plugins.sbt project/
-cp ../fragnostic-conf/project/build.properties project/
-cp ../fragnostic-conf/sbt .
-cp ../fragnostic-conf/version.sbt .
-cp ../fragnostic-conf/build.sbt .
-
